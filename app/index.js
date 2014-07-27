@@ -3,23 +3,24 @@
 var express = require('express');
 var app = express();
 
+var morgan = require('morgan');
+
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
+app.use(morgan('dev'));
+app.use(express.static(__dirname + '/static'));
 
 app.get('/', function(req, res){
-  res.send('home');
+  res.render('raptor');
 });
 
-app.get('/apps/new', function(req, res){
-  res.render('apps/new');
-});
+var server = require('http').Server(app);
 
-app.post('/apps', function(req, res){
-  console.log(req.body);
-  res.redirect('/');
-});
-
-app.listen(7777, function(){
+server.listen(7777, function(){
   console.log('Raptor is listening...');
 });
+
+var connection = require('./controllers/connection');
+var io = require('socket.io')(server);
+io.of('/app').on('connection', connection);
 
