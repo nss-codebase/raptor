@@ -21,6 +21,11 @@
 
   function initializeSocketIo(){
     socket = io.connect('/app');
+    socket.on('bash', bash);
+  }
+
+  function bash(data){
+    console.log(data);
   }
 })();
 
