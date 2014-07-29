@@ -16,7 +16,7 @@ app.get('/', function(req, res){
 
 var server = require('http').Server(app);
 
-server.listen(7001, function(){
+server.listen(7002, function(){
   console.log('Raptor is listening...');
 });
 

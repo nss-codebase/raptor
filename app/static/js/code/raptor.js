@@ -9,7 +9,17 @@
 
   function initialize(){
     $('#add').click(add);
+    $('#reboot').click(reboot);
+    $('#delete-all').click(deleteAll);
     initializeSocketIo();
+  }
+
+  function reboot(){
+    socket.emit('reboot');
+  }
+
+  function deleteAll(){
+    socket.emit('delete-all');
   }
 
   function add(){
@@ -21,10 +31,20 @@
 
   function initializeSocketIo(){
     socket = io.connect('/app');
-    socket.on('bash', bash);
+    socket.on('stdout', stdout);
+    socket.on('stderr', stderr);
+    socket.on('close', close);
   }
 
-  function bash(data){
+  function stdout(data){
+    console.log(data);
+  }
+
+  function stderr(data){
+    console.log(data);
+  }
+
+  function close(data){
     console.log(data);
   }
 })();
