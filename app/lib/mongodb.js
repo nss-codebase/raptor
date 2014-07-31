@@ -7,7 +7,7 @@ exports.connect = function(name, cb){
 
   var url = 'mongodb://localhost/' + name;
   MongoClient.connect(url, function(err, db){
-    console.log('MongoDB is Online');
+    console.log('MongoDB (' + name + '): Online');
     global.mongodb = db;
     cb();
   });

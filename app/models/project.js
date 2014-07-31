@@ -29,7 +29,7 @@ Project.add = function(socket, data){
       project = {name:dir, repository:data.repository, install:data.install, startup:data.startup};
       Project.save(project, function(){
         execute(socket, '/home/ubuntu/apps/code/raptor/app/bash/add.sh', [dir, data.repository, data.install, data.startup], {cwd:'/home/ubuntu/apps/portfolio'});
-        socket.emit('project', project);
+        socket.emit('project');
       });
     }
   });
@@ -40,7 +40,10 @@ Project.reboot = function(socket){
 };
 
 Project.deleteAll = function(socket){
-  execute(socket, '/home/ubuntu/apps/code/raptor/app/bash/delete-all.sh');
+  Project.collection.remove(function(){
+    execute(socket, '/home/ubuntu/apps/code/raptor/app/bash/delete-all.sh');
+    socket.emit('project');
+  });
 };
 
 Project.freeMem = function(socket){

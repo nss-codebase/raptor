@@ -26,13 +26,13 @@ app.get('/projects', function(req, res){
 
 var server = require('http').Server(app);
 
-server.listen(7004, function(){
-  console.log('Raptor is Online');
+server.listen(7005, function(){
+  console.log('Express (raptor): Online');
 });
 
 var connection = require('./controllers/connection');
 var io = require('socket.io')(server);
 io.of('/app').on('connection', connection);
 
-mongodb.connect();
+mongodb.connect('raptor');
 

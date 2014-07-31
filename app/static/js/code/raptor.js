@@ -52,7 +52,7 @@
     socket.on('close', close);
   }
 
-  function project(data){
+  function project(){
     $.ajax({url:'/projects', type:'get', dataType:'html', data:{}, success:function(html){
       $('#projects').empty().append(html);
     }});
