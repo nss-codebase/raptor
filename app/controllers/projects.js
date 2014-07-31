@@ -22,3 +22,7 @@ exports.cpu = function(){
   Project.cpu(this);
 };
 
+exports.list = function(){
+  Project.list(this);
+};
+

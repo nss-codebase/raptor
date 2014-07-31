@@ -1,0 +1,14 @@
+@import url(http://fonts.googleapis.com/css?family=Source+Code+Pro);
+
+table{
+  width: 100%;
+  border: 1px solid grey;
+}
+
+table td{
+  font-family: 'Source Code Pro', monospace;
+  font-size: 11px;
+  padding: 5px;
+  border: 1px dashed grey;
+}
+

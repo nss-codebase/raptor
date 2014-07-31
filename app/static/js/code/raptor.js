@@ -13,6 +13,7 @@
     $('#delete-all').click(deleteAll);
     $('#free-mem').click(freeMem);
     $('#cpu').click(cpu);
+    $('#list').click(list);
     initializeSocketIo();
   }
 
@@ -39,11 +40,22 @@
     socket.emit('cpu');
   }
 
+  function list(){
+    socket.emit('list');
+  }
+
   function initializeSocketIo(){
     socket = io.connect('/app');
+    socket.on('project', project);
     socket.on('stdout', stdout);
     socket.on('stderr', stderr);
     socket.on('close', close);
+  }
+
+  function project(data){
+    $.ajax({url:'/projects', type:'get', dataType:'html', data:{}, success:function(html){
+      $('#projects').empty().append(html);
+    }});
   }
 
   function stdout(data){

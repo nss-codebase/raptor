@@ -1,5 +1,7 @@
 'use strict';
 
+var mongodb = require('./lib/mongodb');
+var Project = require('./models/project');
 var express = require('express');
 var app = express();
 
@@ -11,16 +13,26 @@ app.use(morgan('dev'));
 app.use(express.static(__dirname + '/static'));
 
 app.get('/', function(req, res){
-  res.render('raptor');
+  Project.all(function(err, projects){
+    res.render('raptor', {projects:projects});
+  });
+});
+
+app.get('/projects', function(req, res){
+  Project.all(function(err, projects){
+    res.render('projects', {projects:projects});
+  });
 });
 
 var server = require('http').Server(app);
 
-server.listen(7003, function(){
-  console.log('Raptor is listening...');
+server.listen(7004, function(){
+  console.log('Raptor is Online');
 });
 
 var connection = require('./controllers/connection');
 var io = require('socket.io')(server);
 io.of('/app').on('connection', connection);
+
+mongodb.connect();
 

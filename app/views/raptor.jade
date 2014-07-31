@@ -3,6 +3,7 @@ html
   head
     meta(charset='utf-8')
     title Raptor - Node.js Deploy Server
+    link(rel='stylesheet', href='/css/style.css')
   body
     input#repository(type='text')
     input#install(type='text')
@@ -12,6 +13,10 @@ html
     button#delete-all Delete All
     button#free-mem Free Memory
     button#cpu CPU Utilization
+    button#list PM2 List
+
+    #projects
+      include projects
 
     script(src='/socket.io/socket.io.js')
     script(src='/js/vendor/jquery-2.1.1.min.js')

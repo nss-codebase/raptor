@@ -1,0 +1,15 @@
+table
+  thead
+    tr
+      th Name
+      th Repository
+      th Install
+      th Startup
+  tbody
+    each project in projects
+      tr(data-id=project._id.toString())
+        td= project.name
+        td= project.repository
+        td= project.install
+        td= project.startup
+
