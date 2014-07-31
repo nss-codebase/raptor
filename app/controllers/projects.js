@@ -18,3 +18,7 @@ exports.freeMem = function(){
   Project.freeMem(this);
 };
 
+exports.cpu = function(){
+  Project.cpu(this);
+};
+

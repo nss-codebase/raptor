@@ -12,6 +12,7 @@
     $('#reboot').click(reboot);
     $('#delete-all').click(deleteAll);
     $('#free-mem').click(freeMem);
+    $('#cpu').click(cpu);
     initializeSocketIo();
   }
 
@@ -32,6 +33,10 @@
 
   function freeMem(){
     socket.emit('free-mem');
+  }
+
+  function cpu(){
+    socket.emit('cpu');
   }
 
   function initializeSocketIo(){

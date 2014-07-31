@@ -7,5 +7,6 @@ module.exports = function(socket){
   socket.on('reboot', projects.reboot);
   socket.on('delete-all', projects.deleteAll);
   socket.on('free-mem', projects.freeMem);
+  socket.on('cpu', projects.cpu);
 };
 

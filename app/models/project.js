@@ -22,6 +22,10 @@ Project.freeMem = function(socket){
   execute(socket, '/home/ubuntu/apps/code/raptor/app/bash/free-mem.sh');
 };
 
+Project.cpu = function(socket){
+  execute(socket, '/home/ubuntu/apps/code/raptor/app/bash/cpu.sh');
+};
+
 function execute(socket, file, args, opts){
   args = args || [];
   opts = opts || {};
