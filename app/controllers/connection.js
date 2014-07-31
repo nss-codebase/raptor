@@ -1,12 +1,11 @@
 'use strict';
 
-var add = require('./add');
-var reboot = require('./reboot');
-var deleteAll = require('./delete-all');
+var projects = require('./projects');
 
 module.exports = function(socket){
-  socket.on('add', add);
-  socket.on('reboot', reboot);
-  socket.on('delete-all', deleteAll);
+  socket.on('add', projects.add);
+  socket.on('reboot', projects.reboot);
+  socket.on('delete-all', projects.deleteAll);
+  socket.on('free-mem', projects.freeMem);
 };
 

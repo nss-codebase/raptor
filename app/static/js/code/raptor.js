@@ -11,6 +11,7 @@
     $('#add').click(add);
     $('#reboot').click(reboot);
     $('#delete-all').click(deleteAll);
+    $('#free-mem').click(freeMem);
     initializeSocketIo();
   }
 
@@ -27,6 +28,10 @@
     var install = $('#install').val();
     var startup = $('#startup').val();
     socket.emit('add', {repository:repository, install:install, startup:startup});
+  }
+
+  function freeMem(){
+    socket.emit('free-mem');
   }
 
   function initializeSocketIo(){
