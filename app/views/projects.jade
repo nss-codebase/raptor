@@ -6,9 +6,9 @@ table
       th Name
       th Subdomain
       th Port
-      th Repository
-      th Install
-      th Startup
+      th Git Repository
+      th Install Command
+      th Startup Command
   tbody
     each project in projects
       tr(data-id=project._id.toString())
@@ -17,7 +17,7 @@ table
         td= project.name
         td: a(href='http://#{project.subdomain}', target='_blank')= project.subdomain
         td= project.port
-        td= project.repository
+        td: a(href=project.repository, target='_blank')= project.repository
         td= project.install
         td= project.startup
 
