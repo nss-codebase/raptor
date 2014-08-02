@@ -4,6 +4,16 @@ body{
   background-color: #AAAAAA;
 }
 
+a{
+  color: #0074D9;
+  text-decoration: none;
+}
+
+a:hover{
+  color: #001F3F;
+  text-decoration: underline;
+}
+
 input, button, #console{
   font-family: 'Source Code Pro', monospace;
   font-size: 11px;

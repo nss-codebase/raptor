@@ -15,7 +15,7 @@ table
         td: a.delete(href='#') x
         td: a.update(href='#') u
         td= project.name
-        td= project.subdomain
+        td: a(href='http://#{project.subdomain}', target='_blank')= project.subdomain
         td= project.port
         td= project.repository
         td= project.install
