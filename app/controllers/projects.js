@@ -30,6 +30,10 @@ exports.proxy = function(){
   Project.proxy(this);
 };
 
+exports.raptor = function(){
+  Project.raptor(this);
+};
+
 exports.deleteProject = function(data){
   Project.deleteProject(this, data);
 };

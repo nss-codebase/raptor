@@ -10,6 +10,7 @@ module.exports = function(socket){
   socket.on('cpu', projects.cpu);
   socket.on('list', projects.list);
   socket.on('proxy', projects.proxy);
+  socket.on('raptor', projects.raptor);
   socket.on('delete-project', projects.deleteProject);
   socket.on('update-project', projects.updateProject);
 };

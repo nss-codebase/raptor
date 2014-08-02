@@ -16,6 +16,7 @@
     $('#list').click(list);
     $('#proxy').click(proxy);
     $('#clear').click(clear);
+    $('#raptor').click(raptor);
     $('#projects').on('click', '.delete', deleteProject);
     $('#projects').on('click', '.update', updateProject);
     initializeSocketIo();
@@ -75,6 +76,10 @@
 
   function clear(){
     $('#console').empty();
+  }
+
+  function raptor(){
+    socket.emit('raptor');
   }
 
   function initializeSocketIo(){

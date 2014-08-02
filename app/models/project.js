@@ -65,6 +65,10 @@ Project.list = function(socket){
   execute(socket, '/home/ubuntu/apps/code/raptor/app/bash/list.sh');
 };
 
+Project.raptor = function(socket){
+  execute(socket, '/home/ubuntu/apps/code/raptor/app/bash/raptor.sh');
+};
+
 Project.proxy = function(socket){
   Project.all(function(err, projects){
     var o = {};
