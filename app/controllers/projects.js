@@ -26,3 +26,11 @@ exports.list = function(){
   Project.list(this);
 };
 
+exports.deleteProject = function(data){
+  Project.deleteProject(this, data);
+};
+
+exports.updateProject = function(data){
+  Project.updateProject(this, data);
+};
+

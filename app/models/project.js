@@ -1,6 +1,7 @@
 'use strict';
 
 var spawn = require('child_process').spawn;
+var mongodb = require('mongodb');
 
 function Project(){
 }
@@ -11,6 +12,11 @@ Object.defineProperty(Project, 'collection', {
 
 Project.findByName = function(name, cb){
   Project.collection.findOne({name:name}, cb);
+};
+
+Project.findById = function(_id, cb){
+  _id = mongodb.ObjectID(_id);
+  Project.collection.findOne({_id:_id}, cb);
 };
 
 Project.all = function(cb){
@@ -26,7 +32,7 @@ Project.add = function(socket, data){
 
   Project.findByName(dir, function(err, project){
     if(!project){
-      project = {name:dir, repository:data.repository, install:data.install, startup:data.startup};
+      project = {name:dir, subdomain:data.subdomain, port:data.port, repository:data.repository, install:data.install, startup:data.startup};
       Project.save(project, function(){
         execute(socket, '/home/ubuntu/apps/code/raptor/app/bash/add.sh', [dir, data.repository, data.install, data.startup], {cwd:'/home/ubuntu/apps/portfolio'});
         socket.emit('project');
@@ -56,6 +62,21 @@ Project.cpu = function(socket){
 
 Project.list = function(socket){
   execute(socket, '/home/ubuntu/apps/code/raptor/app/bash/list.sh');
+};
+
+Project.deleteProject = function(socket, data){
+  var _id = mongodb.ObjectID(data.id);
+  Project.collection.findAndRemove({_id:_id}, function(err, project){
+   var name = project.startup.split(' ').pop();
+   execute(socket, '/home/ubuntu/apps/code/raptor/app/bash/delete-project.sh', [name]);
+   socket.emit('project');
+  });
+};
+
+Project.updateProject = function(socket, data){
+  Project.findById(data.id, function(err, project){
+    execute(socket, '/home/ubuntu/apps/code/raptor/app/bash/update-project.sh', [project.name, project.repository, project.install, project.startup], {cwd:'/home/ubuntu/apps/portfolio'});
+  });
 };
 
 function execute(socket, file, args, opts){

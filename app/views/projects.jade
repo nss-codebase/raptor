@@ -1,14 +1,22 @@
 table
   thead
     tr
+      th -
+      th -
       th Name
+      th Subdomain
+      th Port
       th Repository
       th Install
       th Startup
   tbody
     each project in projects
       tr(data-id=project._id.toString())
+        td: a.delete(href='#') x
+        td: a.update(href='#') u
         td= project.name
+        td= project.subdomain
+        td= project.port
         td= project.repository
         td= project.install
         td= project.startup

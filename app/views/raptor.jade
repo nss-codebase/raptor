@@ -5,9 +5,11 @@ html
     title Raptor - Node.js Deploy Server
     link(rel='stylesheet', href='/css/style.css')
   body
-    input#repository(type='text')
-    input#install(type='text')
-    input#startup(type='text')
+    input#subdomain(type='text', placeholder='subdomain')
+    input#port(type='text', placeholder='port')
+    input#repository(type='text', placeholder='repository')
+    input#install(type='text', placeholder='install command')
+    input#startup(type='text', placeholder='startup command')
     button#add Add
     button#reboot Reboot
     button#delete-all Delete All

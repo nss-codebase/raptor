@@ -14,7 +14,21 @@
     $('#free-mem').click(freeMem);
     $('#cpu').click(cpu);
     $('#list').click(list);
+    $('#projects').on('click', '.delete', deleteProject);
+    $('#projects').on('click', '.update', updateProject);
     initializeSocketIo();
+  }
+
+  function deleteProject(e){
+    var id = $(this).parent().parent().data('id');
+    socket.emit('delete-project', {id:id});
+    e.preventDefault();
+  }
+
+  function updateProject(e){
+    var id = $(this).parent().parent().data('id');
+    socket.emit('update-project', {id:id});
+    e.preventDefault();
   }
 
   function reboot(){
@@ -26,10 +40,12 @@
   }
 
   function add(){
-    var repository = $('#repository').val();
-    var install = $('#install').val();
-    var startup = $('#startup').val();
-    socket.emit('add', {repository:repository, install:install, startup:startup});
+    var subdomain = $('#subdomain').val().trim();
+    var port = $('#port').val().trim();
+    var repository = $('#repository').val().trim();
+    var install = $('#install').val().trim();
+    var startup = $('#startup').val().trim();
+    socket.emit('add', {subdomain:subdomain, port:port, repository:repository, install:install, startup:startup});
   }
 
   function freeMem(){
