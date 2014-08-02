@@ -1,14 +1,61 @@
 @import url(http://fonts.googleapis.com/css?family=Source+Code+Pro);
 
-table{
-  width: 100%;
-  border: 1px solid grey;
+body{
+  background-color: #AAAAAA;
 }
 
-table td{
+input, button, #console{
   font-family: 'Source Code Pro', monospace;
   font-size: 11px;
-  padding: 5px;
-  border: 1px dashed grey;
+}
+
+table{
+  width: 100%;
+  font-family: 'Source Code Pro', monospace;
+  font-size: 11px;
+}
+
+table#input td:nth-child(1){
+  width: 200px;
+}
+
+table#input td:nth-child(2) input{
+  width: 100%;
+}
+
+#buttons{
+  background-color: #7FDBFF;
+  border: 1px solid grey;
+  width: 100%;
+}
+
+#buttons button{
+  display: inline-block;
+  margin: 10px;
+}
+
+#console{
+  padding: 10px;
+  overflow: auto;
+  height: 400px;
+  color: #000000;
+  border: 1px solid grey;
+  background-color: #DDDDDD;
+}
+
+.stdout{
+  color: green;
+}
+
+.stderr{
+  color: red;
+}
+
+.close{
+  color: blue;
+}
+
+.time{
+  color: #BBBBBB;
 }
 

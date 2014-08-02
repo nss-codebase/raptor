@@ -5,21 +5,38 @@ html
     title Raptor - Node.js Deploy Server
     link(rel='stylesheet', href='/css/style.css')
   body
-    input#subdomain(type='text', placeholder='subdomain')
-    input#port(type='text', placeholder='port')
-    input#repository(type='text', placeholder='repository')
-    input#install(type='text', placeholder='install command')
-    input#startup(type='text', placeholder='startup command')
-    button#add Add
-    button#reboot Reboot
-    button#delete-all Delete All
-    button#free-mem Free Memory
-    button#cpu CPU Utilization
-    button#list PM2 List
-    button#proxy Restart Proxy
+    table#input
+      tbody
+        tr
+          td Subdomain
+          td: input#subdomain(type='text', placeholder='calculator.bob.com', autofocus=true)
+        tr
+          td Port
+          td: input#port(type='text', placeholder='3125')
+        tr
+          td Git Repository
+          td: input#repository(type='text', placeholder='https://github.com/rwaldron/johnny-five')
+        tr
+          td Install Command
+          td: input#install(type='text', placeholder='npm install')
+        tr
+          td Startup Command
+          td: input#startup(type='text', placeholder='PORT=3125 pm2 start app/index.js --name johnny-five')
+
+    #buttons
+      button#add Add
+      button#reboot Reboot
+      button#delete-all Delete All
+      button#free-mem Free Memory
+      button#cpu CPU Utilization
+      button#list PM2 List
+      button#proxy Restart Proxy
+      button#clear Clear Console
 
     #projects
       include projects
+
+    #console
 
     script(src='/socket.io/socket.io.js')
     script(src='/js/vendor/jquery-2.1.1.min.js')

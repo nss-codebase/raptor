@@ -15,6 +15,7 @@
     $('#cpu').click(cpu);
     $('#list').click(list);
     $('#proxy').click(proxy);
+    $('#clear').click(clear);
     $('#projects').on('click', '.delete', deleteProject);
     $('#projects').on('click', '.update', updateProject);
     initializeSocketIo();
@@ -65,6 +66,10 @@
     socket.emit('proxy');
   }
 
+  function clear(){
+    $('#console').empty();
+  }
+
   function initializeSocketIo(){
     socket = io.connect('/app');
     socket.on('project', project);
@@ -80,15 +85,18 @@
   }
 
   function stdout(data){
-    console.log(data);
+    var $out = '<p><span class="time">'+(new Date())+'</span><span class="stdout">'+data.data+'</span></p>';
+    $('#console').prepend($out);
   }
 
   function stderr(data){
-    console.log(data);
+    var $out = '<p><span class="time">'+(new Date())+'</span><span class="stderr">'+data.data+'</span></p>';
+    $('#console').prepend($out);
   }
 
   function close(data){
-    console.log(data);
+    var $out = '<p><span class="time">'+(new Date())+'</span><span class="close">'+data.data+'</span></p>';
+    $('#console').prepend($out);
   }
 })();
 
