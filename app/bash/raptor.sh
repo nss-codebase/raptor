@@ -1,5 +1,8 @@
 #!/bin/bash
 
+echo 'deleting cached node modules'
+sudo rm -rf /home/ubuntu/.npm
+
 echo 'changing to code directory'
 cd /home/ubuntu/apps/code
 
