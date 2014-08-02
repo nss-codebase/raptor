@@ -84,8 +84,8 @@ Project.proxy = function(socket){
 Project.deleteProject = function(socket, data){
   var _id = mongodb.ObjectID(data.id);
   Project.collection.findAndRemove({_id:_id}, function(err, project){
-   var name = project.startup.split(' ').pop();
-   execute(socket, '/home/ubuntu/apps/code/raptor/app/bash/delete-project.sh', [name]);
+   var alias = project.startup.split(' ').pop();
+   execute(socket, '/home/ubuntu/apps/code/raptor/app/bash/delete-project.sh', [alias, project.name]);
    socket.emit('project');
   });
 };
