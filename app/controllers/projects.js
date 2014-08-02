@@ -26,6 +26,10 @@ exports.list = function(){
   Project.list(this);
 };
 
+exports.proxy = function(){
+  Project.proxy(this);
+};
+
 exports.deleteProject = function(data){
   Project.deleteProject(this, data);
 };

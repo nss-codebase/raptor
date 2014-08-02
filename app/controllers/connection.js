@@ -9,6 +9,7 @@ module.exports = function(socket){
   socket.on('free-mem', projects.freeMem);
   socket.on('cpu', projects.cpu);
   socket.on('list', projects.list);
+  socket.on('proxy', projects.proxy);
   socket.on('delete-project', projects.deleteProject);
   socket.on('update-project', projects.updateProject);
 };

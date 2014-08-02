@@ -2,6 +2,7 @@
 
 var spawn = require('child_process').spawn;
 var mongodb = require('mongodb');
+var fs = require('fs');
 
 function Project(){
 }
@@ -62,6 +63,22 @@ Project.cpu = function(socket){
 
 Project.list = function(socket){
   execute(socket, '/home/ubuntu/apps/code/raptor/app/bash/list.sh');
+};
+
+Project.proxy = function(socket){
+  Project.all(function(err, projects){
+    var o = {};
+
+    projects.forEach(function(p){
+      o[p.subdomain] = 'http://localhost:'+p.port;
+    });
+
+    o = JSON.stringify(o);
+
+    fs.writeFile('/home/ubuntu/proxy.json', o, function(err){
+      execute(socket, '/home/ubuntu/apps/code/raptor/app/bash/proxy.sh');
+    });
+  });
 };
 
 Project.deleteProject = function(socket, data){

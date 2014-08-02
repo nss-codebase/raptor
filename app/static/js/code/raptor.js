@@ -14,6 +14,7 @@
     $('#free-mem').click(freeMem);
     $('#cpu').click(cpu);
     $('#list').click(list);
+    $('#proxy').click(proxy);
     $('#projects').on('click', '.delete', deleteProject);
     $('#projects').on('click', '.update', updateProject);
     initializeSocketIo();
@@ -58,6 +59,10 @@
 
   function list(){
     socket.emit('list');
+  }
+
+  function proxy(){
+    socket.emit('proxy');
   }
 
   function initializeSocketIo(){
