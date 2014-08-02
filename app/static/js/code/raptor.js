@@ -47,7 +47,14 @@
     var repository = $('#repository').val().trim();
     var install = $('#install').val().trim();
     var startup = $('#startup').val().trim();
+
     socket.emit('add', {subdomain:subdomain, port:port, repository:repository, install:install, startup:startup});
+
+    $('#subdomain').val('');
+    $('#port').val('');
+    $('#repository').val('');
+    $('#install').val('');
+    $('#startup').val('');
   }
 
   function freeMem(){
