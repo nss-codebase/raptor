@@ -24,15 +24,15 @@ html
           td: input#startup(type='text', placeholder='PORT=3125 pm2 start app/index.js --name johnny-five')
 
     #buttons
-      button#add Add
-      button#reboot Reboot
-      button#delete-all Delete All
-      button#free-mem Free Memory
-      button#cpu CPU Utilization
-      button#list PM2 List
-      button#proxy Update Proxy
-      button#raptor Update Raptor
-      button#clear Clear Console
+      button.safe#add Add
+      button.safe#clear Clear Console
+      button.safe#free-mem Free Memory
+      button.safe#cpu CPU Utilization
+      button.safe#list PM2 List
+      button.warn#proxy Update Proxy
+      button.warn#raptor Update Raptor
+      button.alert#delete-all Delete All
+      button.alert#reboot Reboot
 
     #projects
       include projects
