@@ -43,6 +43,10 @@ table#input td:nth-child(2) input{
   background-color: #DDDDDD;
 }
 
+#console p{
+  margin: 0px;
+}
+
 .stdout{
   color: green;
 }
@@ -57,5 +61,6 @@ table#input td:nth-child(2) input{
 
 .time{
   color: #BBBBBB;
+  padding-right: 10px;
 }
 
