@@ -7,9 +7,18 @@ exports.connect = function(name, cb){
 
   var url = 'mongodb://localhost/' + name;
   MongoClient.connect(url, function(err, db){
-    console.log('MongoDB (' + name + '): Online');
-    global.mongodb = db;
-    cb();
+
+    if(!err){
+      console.log('MongoDB (' + name + '): Online');
+      global.mongodb = db;
+      cb();
+    }else{
+      console.log(err);
+      setTimeout(function(){
+        exports.connect(name, cb);
+      }, 10000);
+    }
+
   });
 };
 

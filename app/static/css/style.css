@@ -2,6 +2,8 @@
 
 body{
   background-color: #AAAAAA;
+  background-image: url('/img/raptor.jpg');
+  background-size: cover;
 }
 
 a{
@@ -44,6 +46,14 @@ table#input td:nth-child(2) input{
   margin: 10px;
 }
 
+#project-table{
+  border: 1px dashed #111111;
+  padding: 10px 0px 10px 0px;
+  margin: 10px 0px 10px 0px;
+  color: #FFFFFF;
+  background-color: #AAAAAA;
+}
+
 #console{
   padding: 10px;
   overflow: auto;
@@ -51,6 +61,7 @@ table#input td:nth-child(2) input{
   color: #000000;
   border: 1px solid grey;
   background-color: #DDDDDD;
+  opacity: 0.9;
 }
 
 #console p{
